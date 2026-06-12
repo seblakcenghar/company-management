@@ -76,7 +76,7 @@ Buka URL aplikasi (default: `http://127.0.0.1:8000`) dan login dengan akun admin
 
 ## Testing Bagian 2
 
-Jika reviewer ingin mengecek implementasi Task Laravel Bagian 2, pindah ke branch berikut:
+Jika ingin mengecek implementasi Task Laravel Bagian 2, pindah ke branch berikut:
 
 ```bash
 git fetch origin
