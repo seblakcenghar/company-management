@@ -7,7 +7,7 @@ Aplikasi Laravel untuk mengelola data `companies` dan `employees` sesuai require
 - PHP 8.2+
 - Laravel 12
 - laravel/ui (auth + Bootstrap UI)
-- MySQL/PostgreSQL/SQLite
+- MySQL
 - Vite (asset bundling)
 
 ## Fitur Utama
