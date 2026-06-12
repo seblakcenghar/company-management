@@ -18,6 +18,21 @@ class CompanyRepository
         return Company::orderBy('name')->get();
     }
 
+    public function find(int $id): ?Company
+    {
+        return Company::find($id);
+    }
+
+    public function paginateForSelect(?string $search, int $perPage = 10): LengthAwarePaginator
+    {
+        return Company::query()
+            ->when($search, function ($query, $search) {
+                $query->where('name', 'like', '%' . $search . '%');
+            })
+            ->orderBy('name')
+            ->paginate($perPage);
+    }
+
     public function create(array $data): Company
     {
         return Company::create($data);

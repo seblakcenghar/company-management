@@ -1,10 +1,55 @@
 @extends('layouts.app')
 
+@push('styles')
+<style>
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .header-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .header-actions .btn {
+        border-radius: 999px;
+        padding: 0.45rem 1rem;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 767.98px) {
+        .page-header {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .header-actions {
+            width: 100%;
+        }
+
+        .header-actions .btn {
+            width: 100%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+</style>
+@endpush
+
 @section('content')
 <div class="container">
-    <div class="d-flex justify-content-between mb-3">
+    <div class="page-header">
         <h1>Companies</h1>
-        <a href="{{ route('companies.create') }}" class="btn btn-primary">Add Company</a>
+        <div class="header-actions">
+            <a href="{{ route('companies.create') }}" class="btn btn-primary">Add Company</a>
+        </div>
     </div>
 
     @if(session('success'))

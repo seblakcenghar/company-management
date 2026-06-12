@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('styles')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
+
 @section('content')
 <div class="container">
     <h1>Create Employee</h1>
@@ -9,13 +13,11 @@
 
         <div class="mb-3">
             <label>Company</label>
-            <select name="company_id" class="form-control">
+            <select name="company_id" id="company_id" class="form-control">
                 <option value="">-- Select Company --</option>
-                @foreach($companies as $company)
-                    <option value="{{ $company->id }}" @selected(old('company_id') == $company->id)>
-                        {{ $company->name }}
-                    </option>
-                @endforeach
+                @if($selectedCompany)
+                    <option value="{{ $selectedCompany->id }}" selected>{{ $selectedCompany->name }}</option>
+                @endif
             </select>
             @error('company_id') <small class="text-danger">{{ $message }}</small> @enderror
         </div>
@@ -37,3 +39,37 @@
     </form>
 </div>
 @endsection
+
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(function () {
+            $('#company_id').select2({
+                placeholder: '-- Select Company --',
+                allowClear: true,
+                ajax: {
+                    url: '{{ route('companies.options.select2') }}',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term || '',
+                            page: params.page || 1
+                        };
+                    },
+                    processResults: function (data, params) {
+                        params.page = params.page || 1;
+
+                        return {
+                            results: data.results,
+                            pagination: {
+                                more: data.pagination.more
+                            }
+                        };
+                    }
+                }
+            });
+        });
+    </script>
+@endpush
