@@ -7,7 +7,7 @@ Aplikasi Laravel untuk mengelola data `companies` dan `employees` sesuai require
 - PHP 8.2+
 - Laravel 12
 - laravel/ui (auth + Bootstrap UI)
-- MySQL/PostgreSQL/SQLite
+- MySQL
 - Vite (asset bundling)
 
 ## Fitur Utama
@@ -70,19 +70,33 @@ Buka URL aplikasi (default: `http://127.0.0.1:8000`) dan login dengan akun admin
 
 1. Export PDF employees per company
 	- Login, buka menu Employees.
-	- Gunakan panel `Export Employees (PDF)`.
-	- Pilih company, lalu klik `Export PDF`.
+	- Gunakan panel Import / Export Employees.
+	- Pilih company, lalu klik Export PDF.
 
 2. Import Excel employees (minimum 100 records)
 	- Pastikan sudah ada minimal 1 company.
 	- Buka menu Employees.
-	- Gunakan panel `Import Employees (Excel)`.
+	- Gunakan panel Import / Export Employees.
 	- Pilih company tujuan import.
-	- Upload file sample: `public/samples/employees_import_100.xlsx`.
+	- Upload file sample sukses: public/samples/employees_import_100.xlsx.
 
-3. Select2 AJAX pada create employee
+3. Simulasi import gagal (sample failed)
+	- Gunakan file sample gagal: public/samples/employees_import_failed_100.xlsx.
+	- File berisi 100 records dengan sebagian data email invalid untuk menguji skenario partial import.
+
+4. Import Logs
+	- Buka menu Employees lalu klik tombol Import Logs.
+	- Halaman ini menampilkan total rows, success rows, failed rows, status, dan sample detail data gagal.
+	- Implementasi saat ini menyimpan hasil import terbaru saja (log sebelumnya dihapus saat import baru).
+
+5. Select2 AJAX pada create employee
 	- Buka menu Employees > Add Employee.
 	- Field Company menggunakan Select2 dengan request AJAX dan pagination.
+
+## Catatan Scope
+
+- Requirement inti tetap terpenuhi sesuai brief.
+- Fitur sample failed dan import logs adalah improvement tambahan untuk memudahkan verifikasi hasil import saat demo/review.
 
 ## Catatan Teknis
 
