@@ -93,11 +93,6 @@ Buka URL aplikasi (default: `http://127.0.0.1:8000`) dan login dengan akun admin
 	- Buka menu Employees > Add Employee.
 	- Field Company menggunakan Select2 dengan request AJAX dan pagination.
 
-## Catatan Scope
-
-- Requirement inti tetap terpenuhi sesuai brief.
-- Fitur sample failed dan import logs adalah improvement tambahan untuk memudahkan verifikasi hasil import saat demo/review.
-
 ## Catatan Teknis
 
 - Batas logo `max:2048` menggunakan satuan KB (2 MiB).
