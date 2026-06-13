@@ -12,6 +12,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
+    Route::get('/home', function () {
+        return redirect()->route('companies.index');
+    })->name('home');
+
     Route::get('/companies/{company}/logo', [CompanyController::class, 'logo'])->name('companies.logo');
     Route::resource('companies', CompanyController::class);
     Route::resource('employees', EmployeeController::class);
