@@ -111,8 +111,7 @@
                 <div class="col-12">
                     <div class="d-flex flex-wrap gap-2 action-buttons">
                         <button class="btn btn-success" form="importForm" type="submit">Import</button>
-                        <form action="{{ route('employees.export.pdf') }}" method="POST" id="exportForm" class="d-inline">
-                            @csrf
+                        <form action="{{ route('employees.export.pdf') }}" method="GET" id="exportForm" class="d-inline">
                             <input type="hidden" name="company_id" id="export_company_id" value="{{ old('company_id') }}">
                             <button class="btn btn-dark" type="submit">Export PDF</button>
                         </form>
